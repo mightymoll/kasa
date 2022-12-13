@@ -1,12 +1,12 @@
-import logo from '../assets/logo.svg'
+import { ReactComponent as Logo } from '../assets/logo.svg';
 import { Link } from "react-router-dom";
 import '../styles/header.css';
 
 function Header() {
   return (
     <header className='header'>
-      <div>
-        <img src={logo} alt='Kasa logo' className='header_image' />
+      <div className='header_logo' alt='Kasa logo'>
+        <Logo fill='#FF6060' height='68px' />
       </div>
       <nav className='header_nav'>
         <Link to="/" className="header_link">Acceuil</Link>
