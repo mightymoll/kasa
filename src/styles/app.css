@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 /*** REFERENCE:
--colors: bleu=#0065fc bleu clair=#deebff gris clair=#f2f2f2 gris=#d5d5d5
--font/police: Raleway from GoogleFonts
--icons from FontAwesome
+-colors: main #FF6060;
+-font/police: Montserrat
 -breakpoint desktop: > 992px
 -tablet: 768 - 992px
 -breakpoint mobile: < 768px
