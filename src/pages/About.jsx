@@ -1,9 +1,10 @@
-
+import Banner from "../components/Banner";
+import "../styles/banner.css";
+import bannerImage from "../assets/banner-about.png"
 
 function About() {
   return (
-    <div>
-    </div>
+    <Banner text={''} imageSrc={bannerImage} imageAlt='mountains' />
   );
 }
 
