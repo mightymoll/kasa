@@ -1,9 +1,11 @@
-
+import Carrousel from "../components/Carrousel";
+import { useParams } from "react-router-dom";
+import { logementList } from "../data/logementList";
 
 function Logement() {
+  const { id } = useParams();
   return (
-    <div>
-    </div>
+    <Carrousel key={id} logementId={id} slides={[logementList.pictures]} />
   );
 }
 
