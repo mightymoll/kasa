@@ -42,7 +42,7 @@ function Carrousel({ logementId }) {
         </div>
         <p className="slide_index">{`${current + 1} / ${slidesTotal}`}</p>
       </div>
-    </section >
+    </section>
   )
 };
 
