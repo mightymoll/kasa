@@ -15,9 +15,7 @@
   flex: 1;
   display: flex;
   height: 415px;
-  object-fit: cover;
   padding: 0;
-  border-radius: 25px;
 }
 
 .image_active {
@@ -26,7 +24,9 @@
 
 .carrousel_images img {
   flex: 1;
-  height: 415px;
+  min-width: 100%;
+  object-fit: cover;
+  border-radius: 25px;
 }
 
 .image_hidden {
@@ -50,9 +50,14 @@
 }
 
 .slide_index {
+  width: 60px;
+  padding: 5px 0;
+  background: var(--main);
+  border-radius: 10px;
   position: absolute;
   bottom: 25px;
   font-weight: 500;
   align-self: center;
+  text-align: center;
   color: #FFF
 }
