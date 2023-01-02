@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import previous from '../assets/arrow-previous.png';
-import next from '../assets/arrow-next.png';
+import arrow from '../assets/arrow.png';
 import '../styles/carrousel.css';
 import { logementList } from "../data/logementList";
 
@@ -33,11 +32,11 @@ function Carrousel({ logementId }) {
           ))}
         </div>
         <div className="carrousel_controls">
-          <div className="arrow" onClick={previousSlide}>
-            <img src={previous} alt="flèche précédente" />
+          <div className="controls_prev" onClick={previousSlide}>
+            <img src={arrow} alt="flèche précédente" />
           </div>
-          <div className="arrow" onClick={nextSlide}>
-            <img src={next} alt="flèche suivant" />
+          <div className="controls_next" onClick={nextSlide}>
+            <img src={arrow} alt="flèche suivant" />
           </div>
         </div>
         <p className="slide_index">{`${current + 1} / ${slidesTotal}`}</p>
