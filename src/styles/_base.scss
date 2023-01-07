@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+/** colors **/
+$color-base: #FFF;
+$color-primary: #FF6060;
+$gradient-dark: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+$gradient-light: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 100%);
+$darken: brightness(0.7);
+
+//background grey
+$grey-1: #F7F7F7;
+//star ratings
+$grey-2: #E3E3E3;
+//placeholder for host image
+$grey-3: #C4C4C4;
+
+/** fonts **/
+$font-main: "Montserrat", sans-serif;
+
+/** text-styles (weight, size, line-height) **/
+$textstyle: (
+  xlarge: 500 48px/68px $font-main,
+  large: 500 36px/51px $font-main,
+  medium: 500 24px/34px $font-main,
+  bold: 500 18px/26px $font-main,
+  regular: 400 18px/26px $font-main,
+);
+
+@mixin background-opacity($color, $opacity) {
+  background: $color;
+  background: rgba($color, $opacity);
+}

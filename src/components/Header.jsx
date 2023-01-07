@@ -1,6 +1,5 @@
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import { Link } from "react-router-dom";
-import '../styles/header.css';
 
 function Header() {
   return (

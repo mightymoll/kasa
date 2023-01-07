@@ -1,0 +1,436 @@
+// font //
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+// SCSS FILES //
+@import "./_base";
+@import "./_layout";
+@import "./_components";
+
+/*** REFERENCE:
+-breakpoint desktop: > 992px
+-tablet: 768 - 992px
+-breakpoint mobile: < 768px
+***/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0;
+  padding: 0;
+
+  background: $color-base;
+
+  font: map-get($textstyle, regular);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+ul,
+li {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  text-decoration-line: underline;
+}
+
+a:visited {
+  color: $color-primary;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.container_main {
+  @extend %centered;
+  @include flexbox(column, center, center, $gap);
+  margin-top: $size1x;
+  margin-bottom: $size1x;
+  padding: $padding-side;
+}
+
+/* STANDARD ELEMENTS */
+
+// HEADER //
+.header {
+  @extend %centered;
+  @include flexbox(row, space-between, center);
+  padding: $padding-side;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.header_nav {
+  @include flexbox(row, flex-end);
+  width: 309px;
+}
+
+.header_link {
+  width: 50%;
+  font: map-get($textstyle, medium);
+  text-align: right;
+}
+
+// BANNER //
+.banner {
+  @extend %centered;
+  @include flexbox(row, center, center);
+  flex: 1;
+  height: 223px;
+  width: $full-width;
+}
+
+.banner_image {
+  @extend %image;
+  height: 223px;
+  border-radius: $radius-lg;
+
+  filter: $darken;
+}
+
+.banner_title {
+  font: map-get($textstyle, xlarge);
+  color: $color-base;
+  position: absolute;
+}
+
+// FOOTER //
+
+.footer {
+  width: $full-width;
+  height: 209px;
+  background-color: #000;
+  padding: 66px 0 29px 0;
+  @include flexbox(column, space-between, center);
+}
+
+.footer_text {
+  font: map-get($textstyle, medium);
+  color: $color-base;
+}
+
+// HOME PAGE //
+.logements_gallery-container {
+  width: $full-width;
+  @include flexbox();
+}
+
+.logements_gallery {
+  background: $grey-1;
+  border-radius: $radius-lg;
+  padding: 56px 50px;
+  display: grid;
+  place-items: center;
+  gap: 50px 60px;
+}
+
+.card_container {
+  @extend %card;
+}
+
+.card_img {
+  width: 100%;
+  height: 100%;
+}
+
+.card_container img {
+  min-height: 100%;
+  @extend %image;
+  background-color: $color-primary;
+}
+
+//add gradient overlay to image
+.card_img:after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: $gradient-dark;
+  top: 0;
+  left: 0;
+}
+
+.card_title {
+  position: absolute;
+  bottom: $half;
+  left: $half;
+  width: calc(100% - 40px);
+  color: $color-base;
+  font: map-get($textstyle, bold);
+}
+
+// LOGEMENT PAGE //
+
+// CAROUSEL GALLERY//
+.carrousel {
+  @include flexbox(column);
+  width: $full-width;
+  height: 415px;
+  position: relative;
+}
+
+.carrousel_images {
+  flex: 1;
+  @include flexbox(row);
+  height: 100%;
+  width: $full-width;
+  padding: 0;
+}
+
+.image_active {
+  display: contents;
+}
+
+.carrousel_images img {
+  flex: 1;
+  min-width: 100%;
+  object-fit: cover;
+  border-radius: $radius-lg;
+}
+
+.image_hidden {
+  display: none;
+}
+
+.carrousel_controls {
+  @include flexbox(row, space-between, center);
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  top: 150px;
+  padding: 0 24px;
+  z-index: 5;
+}
+
+.controls {
+  height: 80px;
+}
+
+.controls_prev img {
+  transform: rotate(-90deg);
+  width: 80px;
+}
+
+.controls_next img {
+  transform: rotate(90deg);
+  width: 80px;
+}
+
+.slide_index {
+  @include background-opacity(#000, 0.15);
+  width: 60px;
+  padding: 3px 0;
+  border-radius: $radius-med;
+  position: absolute;
+  bottom: 25px;
+  align-self: center;
+  font: map-get($textstyle, bold);
+  text-align: center;
+  color: #FFF
+}
+
+// LOGEMENT PAGE - TITLE //
+.logement_title {
+  font: map-get($textstyle, large);
+}
+
+.logement_location {
+  font: map-get($textstyle, bold);
+}
+
+.title_container {
+  width: $full-width;
+  @include flexbox(row, space-between);
+  color: $color-primary;
+}
+
+.title_container-main {
+  @include flexbox(column, flex-end);
+}
+
+.title_tags {
+  @include flexbox(row, flex-start);
+  align-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: $half;
+}
+
+.tag {
+  @include flexbox(row, center, center);
+  min-width: 115px;
+  height: 25px;
+  color: $color-base;
+  background: $color-primary;
+  border-radius: $radius-med;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.tag p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.title_container-sub {
+  @include flexbox(column, flex-start);
+}
+
+.host {
+  @include flexbox(row, flex-end, center, 10px);
+  margin-bottom: 28px;
+}
+
+.host-name {
+  font: map-get($textstyle, bold);
+  text-align: right;
+}
+
+.host-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  background-color: $grey-3;
+}
+
+.host-image>img {
+  width: 64px;
+  border-radius: 32px;
+  object-fit: cover;
+}
+
+.rating {
+  height: 30px;
+  min-width: max-content;
+}
+
+.star>path {
+  fill: $grey-2;
+}
+
+.star_active>path {
+  fill: $color-primary;
+}
+
+// LOGEMENT PAGE - DETAILS //
+
+.container_details {
+  width: $full-width;
+  display: flex;
+  gap: 67px;
+}
+
+.accordion_container {
+  flex: 1;
+  @include flexbox(column);
+  position: relative;
+}
+
+.accordion_title {
+  @include flexbox(row, space-between, center);
+  height: 52px;
+  padding-left: $half;
+  padding-right: 12px;
+  background: $color-primary;
+  border-radius: $radius-med;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -10px;
+}
+
+.accordion_title h3 {
+  font: map-get($textstyle, bold);
+  line-height: 52px;
+  color: #FFF;
+}
+
+.arrow {
+  height: 15.5px;
+}
+
+.arrow_closed {
+  transform: rotate(180deg);
+  height: 15.5px;
+}
+
+.accordion_content {
+  color: $color-primary;
+  background-color: $grey-1;
+  border-radius: $radius-med;
+  padding: 30px 12px 30px 20px;
+  height: 100%;
+}
+
+.accordion_closed {
+  display: none;
+}
+
+// A PROPOS / ABOUT PAGE //
+
+.about {
+  width: $full-width;
+  padding: $padding-side;
+  @include flexbox(column, space-between, stretch, 30px);
+
+}
+
+// ERROR PAGE //
+.error {
+  @include flexbox(column, flex-start, center);
+  padding: 135px 0 120px 0;
+  color: $color-primary;
+  text-align: center;
+}
+
+.error_404 {
+  font-size: 288px;
+  line-height: 263px;
+  font-weight: 700;
+  margin: 0 0 66px 0;
+}
+
+.error_message {
+  font: map-get($textstyle, large);
+  margin: 0 0 182px 0;
+}
+
+.error_link {
+  font: map-get($textstyle, bold);
+  text-decoration-line: underline;
+}
+
+// END
+
+/*
+@media (min-width: 600px) {
+  .logements_gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .logements_gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+  }
+}
+*/

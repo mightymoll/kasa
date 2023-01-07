@@ -1,7 +1,5 @@
 import { logementList } from "../data/logementList";
 import { Link } from "react-router-dom";
-import "../styles/logementsGallery.css";
-
 
 function LogementsGallery() {
   return (
@@ -13,9 +11,7 @@ function LogementsGallery() {
               <div className='card_img'>
                 <img src={cover} alt={title} />
               </div>
-              <div className='card_title'>
-                <h2>{location}</h2>
-              </div>
+              <h2 className='card_title'>{location}</h2>
             </Link>
           </li>
         ))}

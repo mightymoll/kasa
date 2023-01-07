@@ -1,6 +1,5 @@
 import { logementList } from "../data/logementList";
 import Rating from "../components/Rating"
-import '../styles/logementStyles.css';
 
 function LogementTitle({ logementId }) {
   const logement = logementList.filter((logement => logement.id === logementId));
@@ -16,8 +15,8 @@ function LogementTitle({ logementId }) {
   return (
     <section className="title_container">
       <div className="title_container-main">
-        <h1>{`${logement[0].title}`}</h1>
-        <h2>{`${logement[0].location}`}</h2>
+        <h1 className="logement_title">{`${logement[0].title}`}</h1>
+        <h2 className="logement_location">{`${logement[0].location}`}</h2>
         <ul className="title_tags">
           {tags.map((tag, index) => (
             <li key={`${index}`} className="tag">

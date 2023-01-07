@@ -1,0 +1,44 @@
+/* general styles */
+
+/* margins and padding */
+$full-width: 100%;
+$padding-side: 0 100px;
+$size1x: 40px;
+$half: 20px;
+$gap: 30px;
+$radius-lg: 25px;
+$radius-med: 10px;
+$radius-sm: 5px;
+
+%centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin flexbox($flex-direction: false,
+  $justify-content: false,
+  $align-items: false,
+  $gap: false,
+  $flex: false) {
+  display: flex;
+
+  @if $flex-direction !=false {
+    flex-direction: $flex-direction;
+  }
+
+  @if $justify-content !=false {
+    justify-content: $justify-content;
+  }
+
+  @if $align-items !=false {
+    align-items: $align-items;
+  }
+
+  @if $gap !=false {
+    gap: $gap;
+  }
+}
+
+$small-width: 480px;
+$medium-width: 768px;
+$large-width: 992px;

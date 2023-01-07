@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import arrow from '../assets/arrow.png'
-import '../styles/logementStyles.css';
 
 function Accordion({ title, content }) {
   const [isOpen, setIsOpen] = useState(false);

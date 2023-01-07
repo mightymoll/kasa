@@ -1,0 +1,16 @@
+%card {
+  cursor: pointer;
+  aspect-ratio: 1/1;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  position: relative;
+  border-radius: $radius-med;
+  overflow: hidden;
+}
+
+%image {
+  width: 100%;
+  position: relative;
+  object-fit: cover;
+}

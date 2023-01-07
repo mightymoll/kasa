@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import arrow from '../assets/arrow.png';
-import '../styles/carrousel.css';
 import { logementList } from "../data/logementList";
 
 
@@ -23,24 +22,22 @@ function Carrousel({ logementId }) {
 
   return (
     <section className="carrousel">
-      <div className="carrousel_container">
-        <div className="carrousel_images">
-          {slides.map((picture, index) => (
-            <div className={index === current ? 'image_active' : 'image_hidden'} key={index}>
-              <img src={picture} alt={"photo de logement " + index} />
-            </div>
-          ))}
-        </div>
-        <div className="carrousel_controls">
-          <div className="controls_prev" onClick={previousSlide}>
-            <img src={arrow} alt="flèche précédente" />
+      <div className="carrousel_images">
+        {slides.map((picture, index) => (
+          <div className={index === current ? 'image_active' : 'image_hidden'} key={index}>
+            <img src={picture} alt={"photo de logement " + index} />
           </div>
-          <div className="controls_next" onClick={nextSlide}>
-            <img src={arrow} alt="flèche suivant" />
-          </div>
-        </div>
-        <p className="slide_index">{`${current + 1} / ${slidesTotal}`}</p>
+        ))}
       </div>
+      <div className="carrousel_controls">
+        <div className="controls_prev" onClick={previousSlide}>
+          <img src={arrow} alt="flèche précédente" />
+        </div>
+        <div className="controls_next" onClick={nextSlide}>
+          <img src={arrow} alt="flèche suivant" />
+        </div>
+      </div>
+      <p className="slide_index">{`${current + 1} / ${slidesTotal}`}</p>
     </section>
   )
 };
