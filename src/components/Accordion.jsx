@@ -9,9 +9,9 @@ function Accordion({ title, content }) {
 
   return (
     <div className="accordion_container">
-      <div className="accordion_title">
+      <div className="accordion_title" onClick={() => setIsOpen(!isOpen)}>
         <h3>{title}</h3>
-        <div className="accordion_arrow" onClick={() => setIsOpen(!isOpen)}>
+        <div className="accordion_arrow">
           <img src={arrow} alt="flèche" className={isOpen ? "arrow" : "arrow_closed"} />
         </div>
       </div>
