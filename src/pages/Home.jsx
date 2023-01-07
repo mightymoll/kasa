@@ -6,7 +6,7 @@ import '../styles/logementsGallery.css'
 
 function Home() {
   return (
-    <div>
+    <div className="container_main">
       <Banner text={'Chez vous, partout et ailleurs'} imageSrc={bannerImage} imageAlt='ocean cliffs' />
       <LogementsGallery />
     </div>
