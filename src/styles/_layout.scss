@@ -2,7 +2,8 @@
 
 /* margins and padding */
 $full-width: 100%;
-$padding-side: 0 100px;
+$padding-full: 100px;
+$padding-half: 50px;
 $size1x: 40px;
 $half: 20px;
 $gap: 30px;
@@ -11,6 +12,7 @@ $radius-med: 10px;
 $radius-sm: 5px;
 
 %centered {
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -38,7 +40,3 @@ $radius-sm: 5px;
     gap: $gap;
   }
 }
-
-$small-width: 480px;
-$medium-width: 768px;
-$large-width: 992px;

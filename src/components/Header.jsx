@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <header className='header'>
-      <div className='header_logo' alt='Kasa logo'>
-        <Logo fill='#FF6060' height='68px' />
-      </div>
+      <Logo className='header_logo' alt='Kasa logo' fill='#FF6060' />
       <nav className='header_nav'>
         <Link to="/" className="header_link">Acceuil</Link>
         <Link to="/About" className="header_link">A Propos</Link>

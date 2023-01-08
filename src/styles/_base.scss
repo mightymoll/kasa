@@ -24,6 +24,7 @@ $textstyle: (
   medium: 500 24px/34px $font-main,
   bold: 500 18px/26px $font-main,
   regular: 400 18px/26px $font-main,
+  small: 400 12px/17px $font-main,
 );
 
 @mixin background-opacity($color, $opacity) {
