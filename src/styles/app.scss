@@ -6,26 +6,27 @@
 @import "./_layout";
 @import "./_components";
 
-/*** REFERENCE:
--breakpoint desktop: > 992px
--tablet: 768 - 992px
--breakpoint mobile: < 768px
-***/
+/* BREAKPOINTS REFERENCE:
+-desktop: > 1024px
+-desktop-small: 992px - 1024px
+-tablet: 481px - 991px
+-mobile: < 481px
+*/
 
 @mixin for-mobile {
-  @media (min-width: 380px) and (max-width: 480px) {
+  @media (max-width: 480px) {
     @content;
   }
 }
 
 @mixin for-tablet {
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media (min-width: 481px) and (max-width: 991px) {
     @content;
   }
 }
 
 @mixin for-desktop-small {
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 992px) and (max-width: 1024px) {
     @content;
   }
 }
@@ -128,8 +129,7 @@ a:visited {
   }
 
   @include for-mobile {
-    font: map-get($textstyle, small);
-    font-weight: 500;
+    font: map-get($textstyle, xsmall);
     text-transform: uppercase;
   }
 }
@@ -139,19 +139,19 @@ a:visited {
   @extend %centered;
   @include flexbox(column, flex-start, center);
   max-width: 1800px;
+  height: max-content;
   padding: 0 100px;
-  margin: $size1x, 0;
 
   @include for-desktop-small {
-    padding: $size1x 70px;
+    padding: 0 70px;
   }
 
   @include for-tablet {
-    padding: $size1x;
+    padding: 0 $size1x;
   }
 
   @include for-mobile {
-    padding: $half;
+    padding: 0 $half;
     gap: 20px;
   }
 }
@@ -232,11 +232,16 @@ a:visited {
   width: 100%;
   height: 209px;
   background-color: #000;
+  margin-top: $padding-half;
   padding: 66px 0 29px 0;
   @include flexbox(column, space-between, center);
 
   font: map-get($textstyle, medium);
   color: $color-base;
+
+  @include for-tablet {
+    margin-top: $size1x;
+  }
 
   @include for-mobile {
     padding: 62px 0;
@@ -249,7 +254,7 @@ a:visited {
   color: $color-base;
 
   @include for-mobile {
-    font: map-get($textstyle, small);
+    font: map-get($textstyle, xsmall);
     font-weight: 500;
   }
 }
@@ -287,7 +292,6 @@ a:visited {
     padding: 0;
   }
 }
-
 
 .card_container {
   @extend %card;
@@ -338,6 +342,10 @@ a:visited {
   width: $full-width;
   height: 415px;
   position: relative;
+
+  @include for-mobile {
+    height: 255px;
+  }
 }
 
 .carrousel_images {
@@ -357,6 +365,10 @@ a:visited {
   min-width: 100%;
   object-fit: cover;
   border-radius: $radius-lg;
+
+  @include for-mobile {
+    border-radius: $radius-med;
+  }
 }
 
 .image_hidden {
@@ -371,20 +383,48 @@ a:visited {
   top: 150px;
   padding: 0 24px;
   z-index: 5;
+
+  @include for-tablet {
+    top: 170px;
+    height: 60px;
+    padding: 0 12px;
+  }
+
+  @include for-mobile {
+    height: 20px;
+    padding: 0 6px;
+    top: 120px;
+  }
 }
 
 .controls {
-  height: 80px;
+  height: max-content;
 }
 
 .controls_prev img {
   transform: rotate(-90deg);
   width: 80px;
+
+  @include for-tablet {
+    width: 60px;
+  }
+
+  @include for-mobile {
+    width: 20px;
+  }
 }
 
 .controls_next img {
   transform: rotate(90deg);
   width: 80px;
+
+  @include for-tablet {
+    width: 60px;
+  }
+
+  @include for-mobile {
+    width: 20px;
+  }
 }
 
 .slide_index {
@@ -397,26 +437,66 @@ a:visited {
   align-self: center;
   font: map-get($textstyle, bold);
   text-align: center;
-  color: #FFF
+  color: #FFF;
+
+  @include for-tablet {
+    width: 50px;
+    font: map-get($textstyle, small);
+    font-weight: 500;
+    bottom: 20px;
+  }
+
+  @include for-mobile {
+    display: none;
+  }
 }
 
 // LOGEMENT PAGE - TITLE //
-.logement_title {
-  font: map-get($textstyle, large);
-}
-
-.logement_location {
-  font: map-get($textstyle, bold);
-}
 
 .title_container {
   width: $full-width;
   @include flexbox(row, space-between);
   color: $color-primary;
+  margin: $padding-half 0;
+
+  @include for-desktop-small {
+    margin: $size1x 0 30px;
+  }
+
+  @include for-tablet {
+    margin: 30px 0 20px;
+  }
+
+  @include for-mobile {
+    @include flexbox(column, space-between, 20px);
+    margin: 0;
+  }
+
 }
 
 .title_container-main {
   @include flexbox(column, flex-end);
+}
+
+.logement_title {
+  font: map-get($textstyle, large);
+
+  @include for-tablet {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  @include for-mobile {
+    font: map-get($textstyle, bold);
+  }
+}
+
+.logement_location {
+  font: map-get($textstyle, bold);
+
+  @include for-mobile {
+    font: map-get($textstyle, small);
+  }
 }
 
 .title_tags {
@@ -425,6 +505,14 @@ a:visited {
   gap: 10px;
   flex-wrap: wrap;
   margin-top: $half;
+
+  @include for-tablet {
+    margin-top: 15px;
+  }
+
+  @include for-mobile {
+    margin-top: 10px;
+  }
 }
 
 .tag {
@@ -434,27 +522,63 @@ a:visited {
   color: $color-base;
   background: $color-primary;
   border-radius: $radius-med;
-  font-size: 14px;
-  font-weight: 500;
+  font: map-get($textstyle, small);
+
+  @include for-tablet {
+    height: 20px;
+    min-width: max-content;
+    border-radius: 7.5px;
+    font: map-get($textstyle, xsmall);
+  }
+
+  @include for-mobile {
+    height: 18px;
+    min-width: max-content;
+    border-radius: $radius-sm;
+    font: map-get($textstyle, xxsmall);
+  }
 }
 
 .tag p {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 10px;
+
+  @include for-tablet {
+    margin: 0 8px;
+  }
+
+  @include for-mobile {
+    margin: 0 6px;
+  }
 }
 
 .title_container-sub {
-  @include flexbox(column, flex-start);
+  @include flexbox(column, flex-start, flex-end);
+
+  @include for-tablet {
+    @include flexbox(column, space-between, flex-end);
+  }
+
+  @include for-mobile {
+    @include flexbox(row-reverse, space-between, center);
+  }
 }
 
 .host {
   @include flexbox(row, flex-end, center, 10px);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
+
+  @include for-mobile {
+    margin-bottom: 0;
+  }
 }
 
 .host-name {
   font: map-get($textstyle, bold);
   text-align: right;
+
+  @include for-mobile {
+    font: map-get($textstyle, xsmall);
+  }
 }
 
 .host-image {
@@ -462,33 +586,72 @@ a:visited {
   height: 64px;
   border-radius: 32px;
   background-color: $grey-3;
+  overflow: hidden;
+
+  @include for-mobile {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+  }
 }
 
-.host-image>img {
-  width: 64px;
-  border-radius: 32px;
+.host-image img {
+  width: 100%;
   object-fit: cover;
 }
 
 .rating {
   height: 30px;
   min-width: max-content;
+
+  @include for-tablet {
+    height: 25px;
+  }
+
+  @include for-mobile {
+    height: 15px;
+  }
 }
 
 .star>path {
+  height: 30px;
   fill: $grey-2;
+
+  @include for-tablet {
+    height: 25px;
+  }
+
+  @include for-mobile {
+    height: 15px;
+  }
 }
 
 .star_active>path {
+  height: 30px;
   fill: $color-primary;
+
+  @include for-tablet {
+    height: 25px;
+  }
+
+  @include for-mobile {
+    height: 15px;
+  }
 }
 
 // LOGEMENT PAGE - DETAILS //
 
 .container_details {
   width: $full-width;
-  display: flex;
-  gap: 67px;
+  @include flexbox(row, flex-start, space-between, 67px);
+
+  @include for-tablet {
+    gap: 25px;
+  }
+
+  @include for-mobile {
+    @include flexbox(column, flex-start, stretch, 30px);
+  }
 }
 
 .accordion_container {
@@ -507,21 +670,59 @@ a:visited {
   position: relative;
   z-index: 1;
   margin-bottom: -10px;
+
+  @include for-tablet {
+    height: 40px;
+    padding-left: 15px;
+    padding-right: 10px;
+  }
+
+  @include for-mobile {
+    height: 30px;
+    padding-left: 11.5px;
+    padding-right: 7px;
+    border-radius: $radius-sm;
+  }
 }
 
 .accordion_title h3 {
   font: map-get($textstyle, bold);
   line-height: 52px;
   color: #FFF;
+
+  @include for-mobile {
+    font-size: 16px;
+  }
+
+  @include for-mobile {
+    font-size: 13px;
+    line-height: 18.5px;
+  }
 }
 
 .arrow {
   height: 15.5px;
+
+  @include for-tablet {
+    height: 12px;
+  }
+
+  @include for-mobile {
+    height: 9px;
+  }
 }
 
 .arrow_closed {
   transform: rotate(180deg);
   height: 15.5px;
+
+  @include for-tablet {
+    height: 12px;
+  }
+
+  @include for-mobile {
+    height: 9px;
+  }
 }
 
 .accordion_content {
@@ -530,6 +731,19 @@ a:visited {
   border-radius: $radius-med;
   padding: 30px 12px 30px 20px;
   height: 100%;
+
+  @include for-tablet {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+
+  @include for-mobile {
+    font: map-get($textstyle , xsmall);
+    font-weight: 400;
+    border-radius: $radius-sm;
+    padding: 20px 11.5px 11.5px 11.5px;
+  }
 }
 
 .accordion_closed {
@@ -539,10 +753,24 @@ a:visited {
 // A PROPOS / ABOUT PAGE //
 
 .about {
-  width: $full-width;
+  @extend %centered;
   padding: 0 100px;
+
+  @include for-tablet {
+    padding: 0 70px;
+  }
+
+  @include for-mobile {
+    padding: 0;
+  }
+}
+
+.about_content {
   @include flexbox(column, space-between, stretch, 30px);
 
+  @include for-mobile {
+    gap: 20px;
+  }
 }
 
 // ERROR PAGE //
@@ -551,39 +779,42 @@ a:visited {
   padding: 135px 0 120px 0;
   color: $color-primary;
   text-align: center;
+
+  @include for-mobile {
+    padding: 175px 30px 215px;
+  }
 }
 
 .error_404 {
   font-size: 288px;
   line-height: 263px;
   font-weight: 700;
-  margin: 0 0 66px 0;
+  margin-bottom: 66px;
+
+  @include for-mobile {
+    font-size: 96px;
+    line-height: 99px;
+    margin-bottom: 11px;
+  }
 }
 
 .error_message {
   font: map-get($textstyle, large);
-  margin: 0 0 182px 0;
+  margin-bottom: 182px;
+
+  @include for-mobile {
+    font: map-get($textstyle, bold);
+    margin-bottom: 133px;
+  }
 }
 
 .error_link {
   font: map-get($textstyle, bold);
   text-decoration-line: underline;
+
+  @include for-mobile {
+    font: map-get($textstyle, small);
+  }
 }
 
 // END
-
-/*
-@media (min-width: 600px) {
-  .logements_gallery {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1fr;
-  }
-}
-
-@media (min-width: 992px) {
-  .logements_gallery {
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 1fr;
-  }
-}
-*/

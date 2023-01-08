@@ -11,7 +11,6 @@ function Rating({ etoiles }) {
         < Star
           key={i}
           className={numberOfStars >= i ? "star_active" : "star"}
-          height="30px"
         />
       ))
     }
