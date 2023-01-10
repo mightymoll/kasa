@@ -78,11 +78,10 @@ a:visited {
   @extend %centered;
   max-width: 1800px;
   @include flexbox(row, space-between, center);
-  height: min-content;
   padding: $size1x $padding-full 63px;
 
   @include for-desktop-small {
-    padding: 30px 70px 10px;
+    padding: 30px 70px;
   }
 
   @include for-tablet {
@@ -468,7 +467,7 @@ a:visited {
   }
 
   @include for-mobile {
-    @include flexbox(column, space-between, 20px);
+    @include flexbox(column, space-between, stretch, 16px);
     margin: 0;
   }
 
@@ -686,17 +685,15 @@ a:visited {
 }
 
 .accordion_title h3 {
-  font: map-get($textstyle, bold);
-  line-height: 52px;
+  font: map-get($textstyle, medium);
   color: #FFF;
 
-  @include for-mobile {
-    font-size: 16px;
+  @include for-tablet {
+    font: map-get($textstyle, bold);
   }
 
   @include for-mobile {
     font-size: 13px;
-    line-height: 18.5px;
   }
 }
 
