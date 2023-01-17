@@ -359,6 +359,34 @@ a:visited {
   display: contents;
 }
 
+.image_placeholder {
+  flex: 1;
+  min-width: 100%;
+  object-fit: cover;
+  border: solid 3px $color-primary;
+  background-color: $grey-1;
+  border-radius: $radius-lg;
+  padding: $half;
+
+  @include for-mobile {
+    border-radius: $radius-med;
+    border: solid 1px $color-primary;
+  }
+}
+
+.image_placeholder p {
+  flex: 1;
+  color: $grey-3;
+  text-align: center;
+  position: relative;
+  top: 45%;
+  font: map-get($textstyle , regular);
+
+  @include for-mobile {
+    font: map-get($textstyle , xsmall)
+  }
+}
+
 .carrousel_images img {
   flex: 1;
   min-width: 100%;
