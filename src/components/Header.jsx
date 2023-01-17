@@ -6,7 +6,7 @@ function Header() {
     <header className='header'>
       <Logo className='header_logo' alt='Kasa logo' fill='#FF6060' />
       <nav className='header_nav'>
-        <Link to="/" className="header_link">Acceuil</Link>
+        <Link to="/" className="header_link">Accueil</Link>
         <Link to="/About" className="header_link">A Propos</Link>
       </nav>
     </header>
