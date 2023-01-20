@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import arrow from '../assets/arrow.png';
-import { logementList } from "../data/logementList";
 
+/** refactor to use props : 
+ * pictures[], coverImage, and title passed from parent (Logement.jsx)
+ * coverImage is used if pictures array is empty
+ */
 
-function Carrousel({ logementId }) {
+function Carrousel(props) {
   const [current, setCurrent] = useState(0);
-  const logement = logementList.filter((logement => logement.id === logementId));
+  const slidesTotal = props.pictures.length;
 
-  const slides = logement[0].pictures
-  const slidesTotal = slides.length
-  console.log(slides)
   console.log(slidesTotal)
 
   const nextSlide = () => {
@@ -20,19 +20,21 @@ function Carrousel({ logementId }) {
     setCurrent(current === 0 ? slidesTotal - 1 : current - 1)
   };
 
-  if (slidesTotal === 1) {
+  // don't show controls if only 1 image
+  if (slidesTotal === 1 || slidesTotal === 0) {
     return (
       <section className="carrousel">
         <div className="carrousel_images">
           <div className="image_active">
-            <img src={logement[0].pictures} alt={logement[0].title} />
+            <img src={slidesTotal === 0 ? props.coverImage : props.pictures} alt={props.title} />
           </div>
         </div>
       </section>
     )
   }
 
-  if (slidesTotal === 0) {
+  // background color + msg if no images exist
+  if (slidesTotal === 0 && !props.coverImage) {
     return (
       <section className="carrousel">
         <div className="carrousel_images">
@@ -45,13 +47,14 @@ function Carrousel({ logementId }) {
     )
   }
 
+  // standard render :logement.pictures with arrow controls
   else {
     return (
       <section className="carrousel">
         <div className="carrousel_images">
-          {slides.map((picture, index) => (
+          {props.pictures.map((picture, index) => (
             <div className={index === current ? 'image_active' : 'image_hidden'} key={index}>
-              <img src={picture} alt={`${logement[0].title} ${current + 1}`} />
+              <img src={picture} alt={`${props.title} ${current + 1}`} />
             </div>
           ))}
         </div>

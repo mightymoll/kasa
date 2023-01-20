@@ -5,6 +5,10 @@ import LogementTitle from "../components/LogementTitle";
 import Accordion from "../components/Accordion";
 import Error from "../pages/Error"
 
+/** Carrousel props:
+ * pass logement.cover image url to use if logement.pictures array is empty
+*/
+
 function Logement() {
   const { id } = useParams();
   const logement = logementList.filter((logement => logement.id === id));
@@ -16,11 +20,12 @@ function Logement() {
         <Route path="/*" element={<Error />} />
       </Routes>)
   }
+
   else {
     return (
       <div className="container_main">
-        <Carrousel key={`${id}_Carrousel`} logementId={id} />
-        <LogementTitle key={`${id}_LogementTitle`} logementId={id} />
+        <Carrousel key={`${id}_Carrousel`} pictures={logement[0].pictures} title={logement[0].title} coverImage={logement[0].cover} />
+        <LogementTitle key={`${id} _LogementTitle`} logementId={id} />
         <div className="container_details">
           <Accordion key={`${id}_LogementDescription`} title="Description" content={logement[0].description} />
           <Accordion key={`${id}_LogementEquipments`} title="Équipements" content={logement[0].equipments} />
